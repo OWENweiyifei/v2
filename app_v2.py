@@ -143,9 +143,4 @@ elif chart_type == 'Heart Rate (Single Day)':
             tooltip=['Time:T', 'Value']
         ).properties(height=400, title=f'Heart Rate on {selected_day}')
 
-# 展示图表
-if chart is not None:
-    st.altair_chart(chart, use_container_width=True)
-else:
-    st.info("Please select a view type to begin visualization.")
 
