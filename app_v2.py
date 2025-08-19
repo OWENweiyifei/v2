@@ -117,7 +117,7 @@ elif chart_type == 'Sleep':
         tooltip=['date:T', 'value']
     ).properties(height=400)
 
-    chart = daily_sleep_chart & minute_chart
+    st.altair_chart(daily_sleep_chart & minute_chart, use_container_width=True)
 
 # === 视图类型 3：Heart Rate (Single Day) ===
 elif chart_type == 'Heart Rate (Single Day)':
