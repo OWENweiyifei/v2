@@ -80,7 +80,7 @@ if chart_type == 'Steps':
         ).mark_line(color='#4FC3F7').encode(
             x=alt.X('ActivityHour:T', title='Hour'),
             y=alt.Y('StepTotal:Q', title='Steps'),
-            tooltip=['ActivityHour:T', 'StepTotal']
+            tooltip=['ActivityHour', 'StepTotal']
         ).properties(height=400)
 
         st.altair_chart(daily_steps_chart & hourly_chart, use_container_width=True)
