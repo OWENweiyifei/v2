@@ -51,7 +51,7 @@ filtered_daily = daily_df[(daily_df['Id'] == user_id) &
 #视图选择
 chart_type = st.sidebar.radio("Select View:", ['Steps','Sleep','Heart Rate'])
 
-date_select = alt.selection_point(fields=["Date"], on="click",empty='none'clear='dblclick')
+date_select = alt.selection_point(fields=["Date"], on="click",empty='none',clear='dblclick')
 # 页面标题
 st.title("Health Data Visualization System")
 st.markdown("Data Source: FitBit Fitness Tracker Data")
