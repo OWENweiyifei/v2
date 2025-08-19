@@ -15,19 +15,19 @@ st.set_page_config(
 # 加载数据
 @st.cache_data
 def load_data():
-    daily_df = pd.read_csv("./merged_activity_sleep.csv")
+    daily_df = pd.read_csv("data/merged_activity_sleep.csv")
     daily_df['ActivityDate'] = pd.to_datetime(daily_df['ActivityDate'])
     daily_df['Date'] = daily_df['ActivityDate'].dt.date
 
-    hourly_steps = pd.read_csv("./merged_hourly_steps.csv")
+    hourly_steps = pd.read_csv("data/merged_hourly_steps.csv")
     hourly_steps['ActivityHour'] = pd.to_datetime(hourly_steps['ActivityHour'])
     hourly_steps['Date'] = hourly_steps['ActivityHour'].dt.date
 
-    second_hr = pd.read_csv("./merged_seconds_heartrate.csv")
+    second_hr = pd.read_csv("data/merged_seconds_heartrate.csv")
     second_hr['Time'] = pd.to_datetime(second_hr['Time'])
     second_hr['Date'] = second_hr['Time'].dt.date
 
-    minute_sleep = pd.read_csv("./merged_minute_sleep.csv")
+    minute_sleep = pd.read_csv("data/merged_minute_sleep.csv")
     minute_sleep['date'] = pd.to_datetime(minute_sleep['date'])
     minute_sleep['Date'] = minute_sleep['date'].dt.date
     
