@@ -12,19 +12,19 @@ st.set_page_config(
 # 加载数据
 @st.cache_data
 def load_data():
-    daily_df = pd.read_csv("/Users/owenwei/Downloads/Dissertation/project/archive/merged_activity_sleep.csv")
+    daily_df = pd.read_csv("data/merged_activity_sleep.csv")
     daily_df['ActivityDate'] = pd.to_datetime(daily_df['ActivityDate'])
     daily_df['Date'] = daily_df['ActivityDate'].dt.date
 
-    hourly_steps = pd.read_csv("/Users/owenwei/Downloads/Dissertation/project/archive/merged_hourly_steps.csv")
+    hourly_steps = pd.read_csv("data/merged_hourly_steps.csv")
     hourly_steps['ActivityHour'] = pd.to_datetime(hourly_steps['ActivityHour'])
     hourly_steps['Date'] = hourly_steps['ActivityHour'].dt.date
 
-    second_hr = pd.read_csv("/Users/owenwei/Downloads/Dissertation/project/archive/merged_seconds_heartrate.csv")
+    second_hr = pd.read_csv("data/merged_seconds_heartrate.csv")
     second_hr['Time'] = pd.to_datetime(second_hr['Time'])
     second_hr['Date'] = second_hr['Time'].dt.date
 
-    minute_sleep = pd.read_csv("/Users/owenwei/Downloads/Dissertation/project/archive/merged_minute_sleep.csv")
+    minute_sleep = pd.read_csv("data/merged_minute_sleep.csv")
     minute_sleep['date'] = pd.to_datetime(minute_sleep['date'])
     minute_sleep['Date'] = minute_sleep['date'].dt.date
     
@@ -90,15 +90,12 @@ if chart_type == 'Steps':
 # === 视图类型 2：Sleep Overview ===
 elif chart_type == 'Sleep':
     st.subheader("Daily (Click to see details)")
-    if filtered_daily.empty:
-        st.warning("No sleep data found for selected user and date range.")
+
     # 主图：每日睡眠
-    else:
-        daily_sleep_chart = alt.Chart(filtered_daily).mark_bar(color='#9C27B0', size=13).encode(
+    daily_sleep_chart = alt.Chart(filtered_daily).mark_bar(color='#9C27B0', size=13).encode(
         x=alt.X('Date:T', title='Date', axis = alt.Axis(format='%b %d')),
         y=alt.Y('TotalMinutesAsleep:Q', title='Minutes Asleep'),
-        tooltip=['Date', 'TotalMinutesAsleep'],
-        opacity=alt.condition(date_select, alt.value(1), alt.value(0.3))
+        tooltip=['Date:T', 'TotalMinutesAsleep']
     ).add_params(date_select).properties(height=400)
 
     # 子图：所选日期的分钟级睡眠
