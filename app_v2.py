@@ -1,3 +1,6 @@
+import os
+os.environ["STREAMLIT_WATCH_FOR_CHANGES"] = "false"
+
 import streamlit as st
 import pandas as pd
 import altair as alt
