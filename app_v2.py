@@ -82,7 +82,7 @@ if chart_type == 'Steps':
             y=alt.Y('StepTotal:Q', title='Steps'),
             tooltip=['ActivityHour:T', 'StepTotal']
         ).properties(height=400)
-       st.altair_chart(daily_steps_chart & hourly_chart, use_container_width=True)
+        st.altair_chart(daily_steps_chart & hourly_chart, use_container_width=True)
 
 # === 视图类型 2：Sleep Overview ===
 elif chart_type == 'Sleep Overview':
