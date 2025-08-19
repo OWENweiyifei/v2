@@ -77,7 +77,7 @@ if chart_type == 'Steps':
         hourly_user = hourly_steps[hourly_steps['Id'] == user_id]
         hourly_chart = alt.Chart(hourly_user).transform_filter(
         date_select
-        ).mark_line(color='#4FC3F7').encode(
+        ).mark_bar(color='#4FC3F7').encode(
             x=alt.X('ActivityHour:T', title='Hour'),
             y=alt.Y('StepTotal:Q', title='Steps'),
             tooltip=['ActivityHour', 'StepTotal']
