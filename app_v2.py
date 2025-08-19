@@ -56,11 +56,6 @@ st.title("Health Data Visualization System")
 st.markdown("Data Source: FitBit Fitness Tracker Data")
 
 
-'''# 联动选择器（用于 Steps / Sleep 视图点击）
-date_select = alt.selection_point(
-    fields=['Date'], on='click', empty='none', 
-)'''
-
 # 初始化 chart
 chart = None
 
