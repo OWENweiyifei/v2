@@ -58,8 +58,8 @@ chart_type = st.sidebar.selectbox("Select View:", [
 
 # 筛选数据
 filtered_daily = daily_df[(daily_df['Id'] == user_id) & 
-              (daily_df['Date'].dt.date >= start_date) & 
-              (daily_df['Date'].dt.date <= end_date)]
+              (daily_df['ActivityDate'].dt.date >= start_date) & 
+              (daily_df['ActivityDate'].dt.date <= end_date)]
 
 # 页面标题
 st.title("Health Data Visualization System")
