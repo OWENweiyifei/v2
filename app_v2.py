@@ -51,10 +51,12 @@ filtered_daily = daily_df[(daily_df['Id'] == user_id) &
 #视图选择
 chart_type = st.sidebar.radio("Select View:", ['Steps','Sleep','Heart Rate'])
 
+date_select = alt.selection_point(fields=["Date"], on="click",empty='none',clear='dblclick')
 # 页面标题
 st.title("Health Data Visualization System")
 st.markdown("Data Source: FitBit Fitness Tracker Data")
 
+date_select = alt.selection_point(fields=["Date"], on="click",empty='none',clear='dblclick')
 # 初始化 chart
 chart = None
 
@@ -65,7 +67,6 @@ if chart_type == 'Steps':
         st.warning("No step data found for selected user and date range.")
     else:
     # 主图：每日步数
-        date_select = alt.selection_point(fields=["Date"], on="click",empty='all',clear='dblclick')
         daily_steps_chart = alt.Chart(filtered_daily).mark_bar(color='#2196F3',size=13).encode(
             x=alt.X('Date:T', title='Date',  axis = alt.Axis(format='%b %d')),
             y=alt.Y('TotalSteps:Q', title='Steps'),
@@ -77,7 +78,7 @@ if chart_type == 'Steps':
         hourly_user = hourly_steps[hourly_steps['Id'] == user_id]
         hourly_chart = alt.Chart(hourly_user).transform_filter(
         date_select
-        ).mark_bar(color='#4FC3F7').encode(
+        ).mark_bar(color='#4FC3F7',size=13).encode(
             x=alt.X('ActivityHour:T', title='Hour'),
             y=alt.Y('StepTotal:Q', title='Steps'),
             tooltip=['ActivityHour', 'StepTotal']
