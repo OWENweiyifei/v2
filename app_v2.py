@@ -66,7 +66,7 @@ if chart_type == 'Steps':
         st.warning("No step data found for selected user and date range.")
     else:
     # 主图：每日步数
-        date_select = alt.selection_point(fields=["Date"], on="click",clear='dblclick')
+        date_select = alt.selection_point(fields=["Date"], on="click",empty='none', clear='dblclick')
         daily_steps_chart = alt.Chart(filtered_daily).mark_bar(color='#2196F3',size=13).encode(
             x=alt.X('Date:T', title='Date',  axis = alt.Axis(format='%b %d')),
             y=alt.Y('TotalSteps:Q', title='Steps'),
