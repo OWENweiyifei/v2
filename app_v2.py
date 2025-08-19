@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
+
 # 页面配置
 st.set_page_config(
     page_title="Health Data Visualization System",
@@ -140,5 +141,3 @@ elif chart_type == 'Heart Rate (Single Day)':
             y=alt.Y('Value:Q', title='Heart Rate (bpm)'),
             tooltip=['Time:T', 'Value']
         ).properties(height=400, title=f'Heart Rate on {selected_day}')
-
-
