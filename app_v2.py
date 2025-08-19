@@ -16,8 +16,6 @@ st.set_page_config(
 @st.cache_data
 def load_data():
     daily_df = pd.read_csv("./merged_activity_sleep.csv")
-    if daily_df.empty:
-    st.error("⚠️ daily_df is empty — likely due to missing CSV or path error.")
     daily_df['ActivityDate'] = pd.to_datetime(daily_df['ActivityDate'])
     daily_df['Date'] = daily_df['ActivityDate'].dt.date
 
