@@ -37,9 +37,10 @@ user_ids = sorted(daily_df['Id'].unique())
 user_id = st.sidebar.selectbox("Select User：", user_ids, index=0)
 
 # 日期选择
-date_options = sorted(daily_df['Date'].dt.date.unique())
-start_date = st.sidebar.date_input("Start Date:", value=min(date_options), min_value=min(date_options), max_value=max(date_options))
-end_date = st.sidebar.date_input("End Date:", value=max(date_options), min_value=min(date_options), max_value=max(date_options))
+min_date = daily_df['Date'].min()
+max_date = daily_df['Date'].max()
+start_date = st.sidebar.date_input("Start Date", min_value=min_date, max_value=max_date, value=min_date)
+end_date = st.sidebar.date_input("End Date", min_value=min_date, max_value=max_date, value=max_date)
 
 
 # 筛选数据
